@@ -6,9 +6,10 @@ import com.company.user_system.entity.User;
 import java.util.List;
 
 public interface UserService {
-    void saveUser(UserDto userDto);
 
     List<UserDto> findAllUsers();
+
+    UserDto saveUser(UserDto userDto);
 
     User findUserByEmail(String email);
 
