@@ -16,7 +16,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class UserDto {
 
-    private Long id;
+    private Long userId;
 
     @NotBlank(message="Username should not be empty")
     private String username;
