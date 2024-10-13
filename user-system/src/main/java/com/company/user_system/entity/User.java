@@ -1,22 +1,25 @@
 package com.company.user_system.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
-import javax.management.relation.Role;
+import com.company.user_system.entity.Role;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Data
+@Table(name="users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique=true)
     private String username;
 
     @Column(nullable = false)
@@ -25,19 +28,18 @@ public class User {
     @Column(nullable = false)
     private String lastname;
 
+    @Column(nullable = false, unique=true)
+    private String email;
+
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
-    private String email;
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "users_roles",
-            joinColumns = {@JoinColumn(name="USER_ID", referencedColumnName = "ID")},
-            inverseJoinColumns = {@JoinColumn(name="ROLE_ID", referencedColumnName = "ID")}
-    )
-    private List<Role> roles = new ArrayList<>();
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List<Role> roles;
 }
 
 

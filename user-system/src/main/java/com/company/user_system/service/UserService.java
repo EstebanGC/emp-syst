@@ -17,7 +17,7 @@ public interface UserService {
 
     boolean doesUserExists(Long userId);
 
-    void editUser(UserDto updatedUserDto, Long userId);
+    void updateUser(UserDto updatedUserDto, Long userId);
 
-    void deleteUserById(Long userId);
+    void deleteUser(Long userId);
 }
