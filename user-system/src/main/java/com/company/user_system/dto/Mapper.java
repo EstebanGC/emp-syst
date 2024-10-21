@@ -33,8 +33,7 @@ public class Mapper {
         userDto.setLastName(user.getLastname());
         userDto.setEmail(user.getEmail());
         userDto.setPassword(user.getPassword());
-
-
+        
         userDto.setRoles(user.getRoles().stream()
                 .map(this::fromEntityToRoleDto)
                 .collect(Collectors.toList()));
@@ -55,6 +54,4 @@ public class Mapper {
         roleDto.setName(role.getName());
         return roleDto;
     }
-
-
 }

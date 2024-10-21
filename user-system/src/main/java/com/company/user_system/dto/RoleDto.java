@@ -21,5 +21,5 @@ public class RoleDto {
     @NotBlank
     private String name;
 
-    private List<UserDto> users;
+//    private List<UserDto> users;
 }
