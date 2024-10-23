@@ -17,10 +17,9 @@ public class Mapper {
         user.setEmail(userDto.getEmail());
         user.setPassword(userDto.getPassword());
 
-        // Mapeo correcto de roles
-        user.setRoles(userDto.getRoles().stream()
-                .map(this::fromRoleDtoToEntity)
-                .collect(Collectors.toList()));
+        if (userDto.getRole() != null){
+            user.setRole(fromRoleDtoToEntity(userDto.getRole()));
+        }
 
         return user;
     }
@@ -33,10 +32,10 @@ public class Mapper {
         userDto.setLastName(user.getLastname());
         userDto.setEmail(user.getEmail());
         userDto.setPassword(user.getPassword());
-        
-        userDto.setRoles(user.getRoles().stream()
-                .map(this::fromEntityToRoleDto)
-                .collect(Collectors.toList()));
+
+        if (user.getRole() != null) {
+            userDto.setRole(fromEntityToRoleDto(user.getRole()));
+        }
 
         return userDto;
     }
