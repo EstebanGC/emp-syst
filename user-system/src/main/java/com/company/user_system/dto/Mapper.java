@@ -8,23 +8,8 @@ import java.util.stream.Collectors;
 
 @Component
 public class Mapper {
-    public User fromUserDtoToEntity(UserDto userDto) {
-        User user = new User();
-        user.setUserId(userDto.getUserId());
-        user.setUsername(userDto.getUsername());
-        user.setName(userDto.getName());
-        user.setLastname(userDto.getLastName());
-        user.setEmail(userDto.getEmail());
-        user.setPassword(userDto.getPassword());
 
-        if (userDto.getRole() != null){
-            user.setRole(fromRoleDtoToEntity(userDto.getRole()));
-        }
-
-        return user;
-    }
-
-    public UserDto fromEntityToUserDto(User user) {
+    public UserDto fromEntityToDto(User user) {
         UserDto userDto = new UserDto();
         userDto.setUserId(user.getUserId());
         userDto.setUsername(user.getUsername());
@@ -34,10 +19,21 @@ public class Mapper {
         userDto.setPassword(user.getPassword());
 
         if (user.getRole() != null) {
-            userDto.setRole(fromEntityToRoleDto(user.getRole()));
+            userDto.setRoleId(user.getRole().getRoleId());
         }
-
         return userDto;
+    }
+
+    public User fromDtoToEntity(UserDto userDto, Role role){
+        User user = new User();
+        user.setUserId(userDto.getUserId());
+        user.setUsername(userDto.getUsername());
+        user.setName(userDto.getName());
+        user.setLastname(userDto.getLastName());
+        user.setEmail(userDto.getEmail());
+        user.setPassword(userDto.getPassword());
+        user.setRole(role);
+        return user;
     }
 
     public Role fromRoleDtoToEntity(RoleDto roleDto) {

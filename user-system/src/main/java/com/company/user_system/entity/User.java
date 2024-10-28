@@ -5,7 +5,9 @@ import lombok.*;
 
 import com.company.user_system.entity.Role;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -19,7 +21,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
-    @Column(nullable = false, unique=true)
+    @Column(nullable = false, unique = true)
     private String username;
 
     @Column(nullable = false)
@@ -28,7 +30,7 @@ public class User {
     @Column(nullable = false)
     private String lastname;
 
-    @Column(nullable = false, unique=true)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
