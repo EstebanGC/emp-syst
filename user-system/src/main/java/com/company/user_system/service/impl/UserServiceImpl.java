@@ -38,20 +38,7 @@ public class UserServiceImpl implements UserService {
         return userDto;
     }
 
-    @Override
-    public UserDto saveUser(UserDto userDto) Exception {
-        Optional<Role> roleResponse = roleRepository.findById(userDto.getRoleId());
 
-        if (!roleResponse.isPresent()) {
-            throw new Exception("Role not found");
-        }
-
-        User user = mapper.fromDtoToEntity(userDto, roleResponse.get());
-
-
-        User savedUser = userRepository.save(user);
-        return mapper.fromEntityToDto(savedUser);
-    }
 
 
 }

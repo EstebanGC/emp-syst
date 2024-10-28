@@ -24,7 +24,7 @@ public class Mapper {
         return userDto;
     }
 
-    public User fromDtoToEntity(UserDto userDto, Role role){
+    public User fromDtoToEntity(UserDto userDto){
         User user = new User();
         user.setUserId(userDto.getUserId());
         user.setUsername(userDto.getUsername());
