@@ -32,7 +32,6 @@ public class Mapper {
         userDto.setLastName(user.getLastname());
         userDto.setEmail(user.getEmail());
         userDto.setPassword(user.getPassword());
-        System.out.println("Whatever");
 
         if (user.getRole() != null) {
             userDto.setRole(fromEntityToRoleDto(user.getRole()));

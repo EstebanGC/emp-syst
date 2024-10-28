@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -23,4 +24,6 @@ public class Role {
     @Column(nullable = false, unique=true)
     private String name;
 
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+    private Set<User> users;
 }
