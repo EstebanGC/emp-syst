@@ -38,7 +38,23 @@ public class UserServiceImpl implements UserService {
         return userDto;
     }
 
+    @Override
+    public UserDto saveUser(UserDto userDto)  {
+       Role role = roleRepository.findById(userDto.getRoleId())
+               .orElseThrow(() -> new BadArgumentsException("Role not found"));
 
+       return mapper.fromEntityToDto(userRepository.save(mapper.fromDtoToEntity(userDto)));
+    }
+
+    @Override
+    public UserDto updateUser(UserDto userDto) {
+        return mapper.fromEntityToDto(userRepository.save(mapper.fromDtoToEntity(userDto)));
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
 
 
 }

@@ -22,7 +22,7 @@ public class UserController {
     }
 
     @PostMapping("save/user")
-    public UserDto createUser(@RequestBody UserDto userDto) throws Exception {
+    public UserDto saveUser(@RequestBody UserDto userDto) throws Exception {
         return userService.saveUser(userDto);
     }
 
@@ -32,8 +32,7 @@ public class UserController {
     }
 
     @DeleteMapping("delete/user/{userId}")
-    public void deleteUser(@PathVariable Long userId){
-        return userService.deleteUser(userId);
-        System.out.println("Saying whatever");
+    public void deleteUser(@PathVariable Long userId) {
+        userService.deleteUser(userId);
     }
 }
