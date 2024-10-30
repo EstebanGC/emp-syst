@@ -8,12 +8,11 @@ import com.company.user_system.service.UserService;
 import com.company.user_system.util.BadArgumentsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.company.user_system.dto.Mapper;
-import com.company.user_system.entity.User;
+
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -55,6 +54,4 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
-
-
 }
