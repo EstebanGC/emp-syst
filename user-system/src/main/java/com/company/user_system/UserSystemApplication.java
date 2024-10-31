@@ -9,7 +9,5 @@ public class UserSystemApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(UserSystemApplication.class, args);
-
-		System.out.println("Thinking about mapper");
 	}
 }

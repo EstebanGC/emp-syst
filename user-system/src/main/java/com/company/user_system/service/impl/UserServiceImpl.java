@@ -2,6 +2,7 @@ package com.company.user_system.service.impl;
 
 import com.company.user_system.dto.UserDto;
 import com.company.user_system.entity.Role;
+import com.company.user_system.entity.User;
 import com.company.user_system.repository.RoleRepository;
 import com.company.user_system.repository.UserRepository;
 import com.company.user_system.service.UserService;
@@ -42,16 +43,37 @@ public class UserServiceImpl implements UserService {
        Role role = roleRepository.findById(userDto.getRoleId())
                .orElseThrow(() -> new BadArgumentsException("Role not found"));
 
-       return mapper.fromEntityToDto(userRepository.save(mapper.fromDtoToEntity(userDto)));
+       return mapper.fromEntityToDto(userRepository.save(mapper.fromDtoToEntity(userDto, role)));
     }
 
     @Override
     public UserDto updateUser(UserDto userDto) {
-        return mapper.fromEntityToDto(userRepository.save(mapper.fromDtoToEntity(userDto)));
+        Role role = roleRepository.findById(userDto.getRoleId())
+                .orElseThrow(() -> new BadArgumentsException("Role not found"));
+
+        return mapper.fromEntityToDto(userRepository.save(mapper.fromDtoToEntity(userDto, role)));
     }
 
     @Override
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public User findUserByEmail(String email) {
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new BadArgumentsException("User not found with email: " + email));
+    }
+
+    @Override
+    public UserDto findUserById(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new BadArgumentsException("User not found with ID: " + userId));
+        return mapper.fromEntityToDto(user);
+    }
+
+    @Override
+    public boolean doesUserExists(Long userId) {
+        return userRepository.existsById(userId);
     }
 }

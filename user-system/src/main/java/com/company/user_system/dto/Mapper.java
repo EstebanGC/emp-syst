@@ -4,7 +4,6 @@ import com.company.user_system.entity.Role;
 import com.company.user_system.entity.User;
 import org.springframework.stereotype.Component;
 
-import java.util.stream.Collectors;
 
 @Component
 public class Mapper {
@@ -24,7 +23,7 @@ public class Mapper {
         return userDto;
     }
 
-    public User fromDtoToEntity(UserDto userDto){
+    public User fromDtoToEntity(UserDto userDto, Role role){
         User user = new User();
         user.setUserId(userDto.getUserId());
         user.setUsername(userDto.getUsername());
@@ -32,7 +31,9 @@ public class Mapper {
         user.setLastname(userDto.getLastName());
         user.setEmail(userDto.getEmail());
         user.setPassword(userDto.getPassword());
-        user.setRole(role);
+        if (role != null) {
+            user.setRole(role);
+        }
         return user;
     }
 
