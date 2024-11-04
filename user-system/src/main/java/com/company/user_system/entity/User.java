@@ -3,12 +3,6 @@ package com.company.user_system.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import com.company.user_system.entity.Role;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 @Setter
 @Getter
 @NoArgsConstructor
@@ -36,7 +30,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="role_id")
     private Role role;
 }
