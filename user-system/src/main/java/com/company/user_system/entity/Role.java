@@ -25,5 +25,5 @@ public class Role {
     private String name;
 
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
-    private Set<User> users;
+    private List<User> users;
 }

@@ -29,7 +29,7 @@ public class UserDto {
     private String name;
 
     @NotEmpty(message = "Lastname should not be empty")
-    private String lastName;
+    private String lastname;
 
     @NotEmpty(message = "Email should not be empty")
     private String email;

@@ -13,7 +13,7 @@ public class Mapper {
         userDto.setUserId(user.getUserId());
         userDto.setUsername(user.getUsername());
         userDto.setName(user.getName());
-        userDto.setLastName(user.getLastname());
+        userDto.setLastname(user.getLastname());
         userDto.setEmail(user.getEmail());
         userDto.setPassword(user.getPassword());
 
@@ -28,7 +28,7 @@ public class Mapper {
         user.setUserId(userDto.getUserId());
         user.setUsername(userDto.getUsername());
         user.setName(userDto.getName());
-        user.setLastname(userDto.getLastName());
+        user.setLastname(userDto.getLastname());
         user.setEmail(userDto.getEmail());
         user.setPassword(userDto.getPassword());
         if (role != null) {
