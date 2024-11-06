@@ -9,10 +9,10 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.backend</groupId>
-	<artifactId>novahold</artifactId>
+	<artifactId>user-system</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>novahold</name>
-	<description>Novahold</description>
+	<name>user-system</name>
+	<description>User Management</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -65,10 +65,6 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.33</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 	</dependencies>
 	<build>
