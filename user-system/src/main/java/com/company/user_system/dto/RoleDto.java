@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -21,5 +22,5 @@ public class RoleDto {
     @NotBlank
     private String name;
 
-//    private List<UserDto> users;
+    private List<UserDto> users = new ArrayList<>();
 }

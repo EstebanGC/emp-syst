@@ -4,6 +4,9 @@ import com.company.user_system.entity.Role;
 import com.company.user_system.entity.User;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Component
 public class Mapper {
@@ -41,10 +44,13 @@ public class Mapper {
         Role role = new Role();
         role.setRoleId(roleDto.getRoleId());
         role.setName(roleDto.getName());
+        List<User> users = new ArrayList<>();
         return role;
     }
 
     public RoleDto fromEntityToRoleDto(Role role) {
+        List<UserDto> users = new ArrayList<>();
+        role.getUsers().forEach(user -> users.add(this.fromEntityToDto(user)));
         RoleDto roleDto = new RoleDto();
         roleDto.setRoleId(role.getRoleId());
         roleDto.setName(role.getName());
