@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -37,19 +38,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto saveUser(UserDto userDto)  {
-       Role role = roleRepository.findById(userDto.getRoleId())
-               .orElseThrow(() -> new BadArgumentsException("Role not found"));
+    public UserDto saveUser(UserDto userDto) throws BadArgumentsException {
+       Optional<Role> role = roleRepository.findById(userDto.getRoleId());
 
-       return mapper.fromEntityToDto(userRepository.save(mapper.fromDtoToEntity(userDto, role)));
+       if (role.isEmpty()){
+           throw new BadArgumentsException("The role does not exist.");
+       }
+       return mapper.fromEntityToDto(userRepository.save(mapper.fromDtoToEntity(userDto)));
     }
 
     @Override
     public UserDto updateUser(UserDto userDto) {
-        Role role = roleRepository.findById(userDto.getRoleId())
-                .orElseThrow(() -> new BadArgumentsException("Role not found"));
-
-        return mapper.fromEntityToDto(userRepository.save(mapper.fromDtoToEntity(userDto, role)));
+        return mapper.fromEntityToDto(userRepository.save(mapper.fromDtoToEntity(userDto)));
     }
 
     @Override

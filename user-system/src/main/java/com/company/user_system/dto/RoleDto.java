@@ -1,6 +1,5 @@
 package com.company.user_system.dto;
 
-import com.company.user_system.entity.User;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

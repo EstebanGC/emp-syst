@@ -2,14 +2,17 @@ package com.company.user_system.service.impl;
 
 import com.company.user_system.dto.Mapper;
 import com.company.user_system.dto.RoleDto;
+import com.company.user_system.entity.Role;
 import com.company.user_system.repository.RoleRepository;
 import com.company.user_system.repository.UserRepository;
 import com.company.user_system.service.RoleService;
+import com.company.user_system.util.BadArgumentsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RoleServiceImpl implements RoleService {

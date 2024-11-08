@@ -13,30 +13,23 @@ public class Mapper {
 
     public UserDto fromEntityToDto(User user) {
         UserDto userDto = new UserDto();
-        userDto.setUserId(user.getUserId());
+        userDto.setRoleId(user.getRoleId());
         userDto.setUsername(user.getUsername());
         userDto.setName(user.getName());
         userDto.setLastname(user.getLastname());
         userDto.setEmail(user.getEmail());
         userDto.setPassword(user.getPassword());
-
-        if (user.getRole() != null) {
-            userDto.setRoleId(user.getRole().getRoleId());
-        }
         return userDto;
     }
 
-    public User fromDtoToEntity(UserDto userDto, Role role){
+    public User fromDtoToEntity(UserDto userDto){
         User user = new User();
-        user.setUserId(userDto.getUserId());
+        user.setRoleId(userDto.getRoleId());
         user.setUsername(userDto.getUsername());
         user.setName(userDto.getName());
         user.setLastname(userDto.getLastname());
         user.setEmail(userDto.getEmail());
         user.setPassword(userDto.getPassword());
-        if (role != null) {
-            user.setRole(role);
-        }
         return user;
     }
 
