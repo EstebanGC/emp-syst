@@ -14,6 +14,7 @@ public class Mapper {
     public UserDto fromEntityToDto(User user) {
         UserDto userDto = new UserDto();
         userDto.setRoleId(user.getRoleId());
+        userDto.setUserId(user.getUserId());
         userDto.setUsername(user.getUsername());
         userDto.setName(user.getName());
         userDto.setLastname(user.getLastname());
@@ -25,6 +26,7 @@ public class Mapper {
     public User fromDtoToEntity(UserDto userDto){
         User user = new User();
         user.setRoleId(userDto.getRoleId());
+        user.setUserId(user.getUserId());
         user.setUsername(userDto.getUsername());
         user.setName(userDto.getName());
         user.setLastname(userDto.getLastname());
@@ -47,6 +49,7 @@ public class Mapper {
         RoleDto roleDto = new RoleDto();
         roleDto.setRoleId(role.getRoleId());
         roleDto.setName(role.getName());
+        roleDto.setUsers(users);
         return roleDto;
     }
 }
