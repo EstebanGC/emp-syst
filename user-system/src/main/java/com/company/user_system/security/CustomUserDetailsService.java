@@ -11,7 +11,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -26,14 +25,17 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = userRepository.findByEmail(email);
+        // Usar Optional para evitar valores nulos
+        Optional<User> userOptional = userRepository.findByEmail(email);
 
-        if (user != null) {
-            return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
-                    mapRolesToAuthorities(user.getRoleId()));
-        } else {
-            throw new UsernameNotFoundException("Invalid username or password");
-        }
+        User user = userOptional.orElseThrow(() ->
+                new UsernameNotFoundException("Invalid username or password"));
+
+        return new org.springframework.security.core.userdetails.User(
+                user.getEmail(),
+                user.getPassword(),
+                mapRolesToAuthorities(user.getRoleId())
+        );
     }
 
     private Collection< ? extends GrantedAuthority> mapRolesToAuthorities(Collection <Role> roles) {

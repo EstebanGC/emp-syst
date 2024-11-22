@@ -30,6 +30,7 @@ public class RoleServiceImpl implements RoleService {
     public List<RoleDto> findAllRoles() {
         List<RoleDto> roleDto = new ArrayList<>();
         roleRepository.findAll().forEach(role -> roleDto.add(mapper.fromEntityToRoleDto(role)));
+        System.out.println("Whatever");
         return roleDto;
     }
 
