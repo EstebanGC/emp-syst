@@ -37,5 +37,5 @@ public class UserDto {
     @NotNull(message = "Password should not be empty")
     private String password;
 
-    private Long roleId;
+    private Role role;
 }
