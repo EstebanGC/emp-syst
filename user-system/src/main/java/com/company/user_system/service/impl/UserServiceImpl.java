@@ -39,12 +39,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto saveUser(UserDto userDto) throws BadArgumentsException {
-       Optional<Role> role = roleRepository.findById(userDto.getRoleId());
+       Optional<Role> roleOptional = roleRepository.findById(userDto.getRoleId());
 
-       if (role.isEmpty()){
+       if (roleOptional.isEmpty()){
            throw new BadArgumentsException("The role does not exist.");
        }
-       return mapper.fromEntityToDto(userRepository.save(mapper.fromDtoToEntity(userDto)));
+       User user = mapper.fromDtoToEntity(userDto);
+       user.setRole(roleOptional.get());
+
+       return mapper.fromEntityToDto(userRepository.save(user));
     }
 
     @Override

@@ -2,6 +2,9 @@ package com.company.user_system.dto;
 
 
 import com.company.user_system.entity.Role;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -37,5 +40,5 @@ public class UserDto {
     @NotNull(message = "Password should not be empty")
     private String password;
 
-    private Role role;
+    private Long roleId;
 }
