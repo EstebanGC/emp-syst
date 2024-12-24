@@ -12,6 +12,10 @@ public class AuthController {
     @Autowired
     public UserService userService;
 
+    public void whatever() {
+        System.out.println("Whatever");
+    }
+
 
 
 
