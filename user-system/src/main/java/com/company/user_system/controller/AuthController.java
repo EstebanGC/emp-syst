@@ -15,8 +15,5 @@ public class AuthController {
     public void whatever() {
         System.out.println("Whatever");
     }
-
-
-
-
+    
 }
