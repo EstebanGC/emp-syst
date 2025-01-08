@@ -58,7 +58,6 @@ public class AuthController {
         model.addAttribute("user", user);
         return "edit";
     }
-
 }
 
 
